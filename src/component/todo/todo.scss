@@ -1,0 +1,12 @@
+.todo {
+
+  border: solid 1px cadetblue;
+  max-width: 500px;
+
+  span {
+    &.done{
+      text-decoration: line-through;
+    }
+  }
+
+}
