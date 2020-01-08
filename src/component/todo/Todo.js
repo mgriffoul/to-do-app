@@ -4,29 +4,18 @@ export default class Todo extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            todo: true,
-        };
     }
-
-    handleClick = () => {
-        this.setState({todo: false})
-    };
-
-    reset = () => {
-        this.setState({todo: true})
-    };
 
     render() {
 
-        let {todo} = this.state;
-        let todoClassName = todo ? '' : 'done';
+        const {done, title, checkTodo, reset} = this.props;
+        let todoClassName = done ? 'done' : '';
 
         return (
             <div className={'todo'}>
-                <span className={todoClassName}> Ma première Todo </span>
-                <button onClick={this.handleClick}> done</button>
-                <button onClick={this.reset}> reset</button>
+                <span className={todoClassName}> {title} </span>
+                <button onClick={checkTodo}> done</button>
+                <button onClick={reset}> reset</button>
             </div>
         )
     }
