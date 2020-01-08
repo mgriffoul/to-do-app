@@ -6,28 +6,41 @@ class Body extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-
-
-            done: false,
-            title: 'Ma première todo'
+            todos: [
+                {
+                    title: 'ma 1 todo',
+                    done: false
+                },
+                {
+                    title: 'ma 2 todo',
+                    done: true
+                }
+            ]
         };
     };
 
-    checkTodo = () => {
-        this.setState({done: true})
+
+    checkTodo = (clickedIndex) => {
+        const newTodos = [...this.state.todos];
+        newTodos[clickedIndex].done = true;
+        this.setState({todos: newTodos})
     };
 
+
     reset = () => {
-        this.setState({done: false})
+        alert('reset');
     };
 
     render() {
 
         return (
             <div>
-                <Todo done={this.state.done} title={this.state.title} checkTodo={this.checkTodo} reset={this.reset}/>
+                {this.state.todos.map((todo, index) =>
+                    <Todo key={index} done={todo.done} title={todo.title} index={index} checkTodo={this.checkTodo}
+                          reset={this.reset}/>)}
             </div>
         )
+
     }
 
 }
